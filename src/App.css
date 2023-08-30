@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
+:root {
+  --text-font: 'Merriweather', serif;
+  --header-font: 'Montserrat', sans-serif;
+}
+
+.App {
+  font-family: var(--header-font);
+  font-weight: 500;
+  font-size: 48px;
+}
