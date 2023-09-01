@@ -13,4 +13,5 @@
   box-sizing: border-box;
   /* all: unset; */
   font: inherit;
+  font-family: var(--header-font);
 }
