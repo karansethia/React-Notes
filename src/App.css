@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,400&family=Montserrat:wght@300;400;500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,400&family=Montserrat:wght@300;400;500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,400&family=Montserrat:wght@300;400;500&family=Work+Sans&display=swap');
 
 :root {
   --text-font: 'Merriweather', serif;
   --header-font: 'Montserrat', sans-serif;
+  --note-header: 'Work Sans', sans-serif;
 }
 
-.App {
-  font-family: var(--header-font);
-  font-weight: 500;
-  font-size: 48px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* all: unset; */
+  font: inherit;
 }

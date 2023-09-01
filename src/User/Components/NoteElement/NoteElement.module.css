@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
+  height: 130px;
+  background-color: #c2bbf0;
+  padding: 15px;
+  border-radius: 0.5rem;
+  box-shadow: inset 0px 4px 4px #00000040, 1px 4px 4px #11192c99;
+}
+
+.header {
+  font-family: var(--note-header);
+  color: rgb(66, 66, 66);
+  font-size: 24px;
+  font-weight: 400;
+  flex-wrap: wrap;
+}
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px;
+}
+
+.tagContainer svg {
+  margin: 0px 4px 0px 4px;
+}
+
+.pinned {
+  border-left: 5px solid #11192cdf;
+}
