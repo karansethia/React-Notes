@@ -1,3 +1,40 @@
 .nav {
+  width: 100%;
+  padding: 0.5rem 4rem;
   background-color: #11192C;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 3rem;
+  height: fit-content;
+  align-self: center;
+}
+
+.infocontainer,
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.infocontainer {
+  gap: 1rem;
+}
+
+.info>img {
+  width: 2rem;
+  height: 2rem;
+  aspect-ratio: 1/1;
+  border-radius: 2rem;
+  margin-right: 10px;
+}
+
+.infocontainer>svg {
+  width: 2rem;
+  height: fit-content;
 }

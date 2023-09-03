@@ -40,8 +40,8 @@ const Navbar = () => {
         </svg>
       </div>
 
-      <div className="infoContainer">
-        <div className="info">
+      <div className={classes.infocontainer}>
+        <div className={classes.info}>
           <img src={User} alt="" />
           <h4>Karan</h4>
         </div>
