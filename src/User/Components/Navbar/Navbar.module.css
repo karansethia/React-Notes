@@ -29,7 +29,7 @@
 .info>img {
   width: 2rem;
   height: 2rem;
-  aspect-ratio: 1/1;
+  /* aspect-ratio: 1/1; */
   border-radius: 2rem;
   margin-right: 10px;
 }

@@ -6,7 +6,6 @@ import Navbar from "./User/Components/Navbar/Navbar";
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
       <NoteDash />
     </div>
   );
