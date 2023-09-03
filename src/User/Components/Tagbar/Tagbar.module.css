@@ -1,0 +1,26 @@
+.tagbar {
+  height: 88vh;
+  width: 20%;
+  max-width: 18rem;
+  border-radius: 0.625rem;
+  background-color: rgba(17, 25, 44, 0.80);
+  box-shadow: 1px 1px 5px 0px rgba(17, 25, 44, 0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 20px;
+  padding: 1rem 0rem
+}
+
+.tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.3rem 0.7rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  background-color: #00034A;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 0.7rem;
+}

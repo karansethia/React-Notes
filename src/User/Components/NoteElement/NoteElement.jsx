@@ -3,12 +3,22 @@ import classes from "./NoteElement.module.css";
 import notesData from "../../../data";
 
 const NoteElement = (props) => {
-  console.log(notesData);
-  const title = notesData[0].title.split(" ");
-  const noteTitle =
-    title[0] + " " + title[1] + " " + title[2] + " " + title[3] + "...";
-  console.log(noteTitle);
-  console.log(props.ispin);
+  // console.log(notesData);
+  const noteTitle = props.title.split(" ");
+  var title = "";
+  if (noteTitle.length > 3) {
+    title =
+      noteTitle[0] +
+      " " +
+      noteTitle[1] +
+      " " +
+      noteTitle[2] +
+      " " +
+      noteTitle[3] +
+      "...";
+  } else {
+    title = noteTitle.join(" ");
+  }
 
   return (
     <div
@@ -17,7 +27,7 @@ const NoteElement = (props) => {
       }
     >
       <div className={classes.header}>
-        <h3>{noteTitle}</h3>
+        <h3>{title}</h3>
       </div>
       <div className={classes.tagContainer}>
         <svg width="14" height="14">

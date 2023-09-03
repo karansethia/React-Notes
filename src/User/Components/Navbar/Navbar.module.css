@@ -8,9 +8,13 @@
 }
 
 .logo {
-  width: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo>svg {
+  width: 5rem;
   height: fit-content;
-  align-self: center;
 }
 
 .infocontainer,

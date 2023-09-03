@@ -36,4 +36,6 @@
   }
 ];
 
+export const tags = ["Work", "Development", "Home"]
+
 export default notesData
