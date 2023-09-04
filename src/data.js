@@ -33,7 +33,28 @@
     content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
     includedTags: [{tagName: "Work", color: "#0085ff"}, {tagName:"Development", color:"green"}],
     isPin: true
-  }
+  },
+  {
+    id: 6,
+    title: "Ideas for Project",
+    content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
+    includedTags: [{tagName: "Work", color: "#0085ff"}, {tagName:"Development", color:"green"}],
+    isPin: true
+  },
+  {
+    id: 7,
+    title: "Ideas for Project",
+    content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
+    includedTags: [{tagName: "Work", color: "#0085ff"}, {tagName:"Development", color:"green"}],
+    isPin: true
+  },
+  {
+    id: 8,
+    title: "Ideas for Project",
+    content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
+    includedTags: [{tagName: "Work", color: "#0085ff"}, {tagName:"Development", color:"green"}],
+    isPin: true
+  },
 ];
 
 export const tags = ["Work", "Development", "Home"]

@@ -1,4 +1,9 @@
-.notedash {
-  height: 100vh;
+.container {
+  width: 100%;
   background-color: #272727;
+}
+
+.notedash {
+  display: flex;
+  flex-direction: row;
 }
