@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Newnote.module.css";
 import Navbar from "../Components/Navbar/Navbar";
 import NoteEditor from "../Components/NoteEditor/NoteEditor";
-import Notelist from "../Components/NoteList/Notelist";
+import Notes from "../Components/Notes/Notes";
 
 const Newnote = () => {
   return (
@@ -10,7 +10,7 @@ const Newnote = () => {
       <Navbar />
       <div className={classes.wrapper}>
         <NoteEditor />
-        <Notelist />
+        <Notes gridtype="containercol" />
       </div>
     </div>
   );

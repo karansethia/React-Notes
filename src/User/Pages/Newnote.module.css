@@ -1,9 +1,12 @@
-.container {}
-
-.wrapper {
+.container {
   width: 100%;
 }
 
-.wrapper:first-child {
-  width: 1200px
+.wrapper {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }

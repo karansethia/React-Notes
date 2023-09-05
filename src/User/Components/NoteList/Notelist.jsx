@@ -17,7 +17,7 @@ const Notelist = () => {
         </div>
         <button>New Note</button>
       </div>
-      <Notes />
+      <Notes gridtype="containergrid" />
     </div>
   );
 };
