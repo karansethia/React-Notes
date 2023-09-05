@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Notelist.module.css";
-import NoteElement from "../NoteElement/NoteElement";
-import notesData from "../../../data";
+
+import Notes from "../Notes/Notes";
 
 const Notelist = () => {
   return (
@@ -17,18 +17,7 @@ const Notelist = () => {
         </div>
         <button>New Note</button>
       </div>
-      <div className={classes.notecontainer}>
-        {notesData.map((note) => (
-          <NoteElement
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            content={note.content}
-            includedtags={note.includedTags}
-            ispin={note.isPin}
-          />
-        ))}
-      </div>
+      <Notes />
     </div>
   );
 };

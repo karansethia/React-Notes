@@ -1,0 +1,9 @@
+.container {}
+
+.wrapper {
+  width: 100%;
+}
+
+.wrapper:first-child {
+  width: 1200px
+}
