@@ -5,6 +5,11 @@
   --text-font: 'Merriweather', serif;
   --header-font: 'Montserrat', sans-serif;
   --note-header: 'Work Sans', sans-serif;
+  --light-note: #F4F1BB;
+  --light-nav: #5E5EDC;
+  --light-tag: rgba(37, 42, 208, 0.64);
+  --light-tagbar: #C2BBF0;
+  --light-bg: #E9E9E9;
 }
 
 * {
