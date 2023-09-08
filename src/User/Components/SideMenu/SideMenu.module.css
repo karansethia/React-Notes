@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 11.5%;
+  left: 82%;
+  height: 87vh;
+  width: 17vw;
+  background-color: #2B3140;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.function {
+  background-color: #2C2C2C;
+  margin: 10px;
+  padding: 8px 10px 8px 10px;
+  font-size: 0.85rem;
+  color: #fff;
+  border-radius: 0.5rem;
+}

@@ -24,4 +24,5 @@
 .App {
   background-color: #272727;
   height: 100vh;
+  overflow-y: hidden;
 }
