@@ -7,7 +7,6 @@ import Notes from "../Components/Notes/Notes";
 const Newnote = () => {
   return (
     <div className={classes.container}>
-      <Navbar />
       <div className={classes.wrapper}>
         <NoteEditor />
         <Notes gridtype="containercol" />

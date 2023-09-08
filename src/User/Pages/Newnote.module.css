@@ -1,5 +1,8 @@
 .container {
   width: 100%;
+  background-color: #272727;
+  height: 92vh;
+  overflow-y: hidden;
 }
 
 .wrapper {

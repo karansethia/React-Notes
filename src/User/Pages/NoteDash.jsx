@@ -8,7 +8,6 @@ import Tagbar from "../Components/Tagbar/Tagbar";
 const NoteDash = () => {
   return (
     <div className={classes.container}>
-      <Navbar />
       <div className={classes.notedash}>
         <Tagbar />
         <Notelist />
