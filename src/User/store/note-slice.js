@@ -18,7 +18,7 @@
 */
 import { createSlice } from "@reduxjs/toolkit";
 
-const noteSlice = createSlice({
+export const noteSlice = createSlice({
   name: "Notes",
   initialState: {notes : [
       {
@@ -99,6 +99,6 @@ const noteSlice = createSlice({
       //! empty the state
     }
   }
-
-
 })
+
+export const noteActions = noteSlice.actions;
