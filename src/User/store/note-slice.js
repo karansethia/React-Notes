@@ -21,7 +21,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const noteSlice = createSlice({
   name: "Notes",
   initialState: {notes : [
-      {
+  {
     id: 1,
     title: "Meeting Agenda along with clients from Italy",
     content: "Prepare for the upcoming meeting by outlining project updates, discussing timeline adjustments, and addressing any potential roadblocks. Ensure all team members are informed and ready to contribute.",
@@ -81,22 +81,43 @@ export const noteSlice = createSlice({
   reducers: {
     pinStatus(state, action){
       //!get an id and match the note from the initial state and update the pin => !pin
+      const current_id = action.payload;
+      const noteItem = state.notes.find((note) => note.id === current_id);
+      noteItem.isPin = !noteItem.isPin
     },
     saveNote(state, action){
       //! if id not existing in state add note or update note
+      const {id, title, content, includedTags,isPin} = action.payload;
+      const noteItem = state.notes.find((note) => note.id === id);
+      if(!noteItem){
+        state.notes.push({
+          id: id,
+          title: title,
+          content: content,
+          includedTags: includedTags,
+          isPin: isPin
+        })
+      }else{
+        noteItem.content = content;
+        noteItem.title = title;
+        noteItem.includedTags = includedTags
+      }
     },
     shareNote(state, action){
       //!get the id from payload and send that note to somewhere => we'll figure that part later
     },
     addTag(state, payload){
-      //! add the tag selected from the tagbar component 
       //todo - we'll add custom tag functionality later
+
     },
     deleteNote(state, action){
       //! take the id and delete the note from the state
+      const current_id = action.payload;
+      state.notes = state.notes.filter((note) => note.id === current_id);
     },
     deleteAllNotes(state, action){
       //! empty the state
+      state.notes = state.notes.splice(0,state.notes.length)
     }
   }
 })
