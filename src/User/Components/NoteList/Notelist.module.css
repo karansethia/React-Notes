@@ -22,7 +22,8 @@ select {
   border-radius: 5px;
 }
 
-button {
+.sort a {
+  text-decoration: none;
   background-color: #5E5EDC;
   color: #fff;
   font-size: 0.8rem;
