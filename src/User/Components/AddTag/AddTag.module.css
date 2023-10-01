@@ -10,12 +10,20 @@
 
 .modal {
   position: fixed;
-  top: 30vh;
-  left: 10%;
-  width: 80%;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  max-width: 40rem;
   z-index: 100;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: rgb(238, 238, 238);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 6rem;
+  position: static;
 }

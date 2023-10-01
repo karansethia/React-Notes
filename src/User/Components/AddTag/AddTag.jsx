@@ -6,19 +6,19 @@ const AddTagModal = (props) => {
   const [color, setColor] = useState();
   const [createNewTag, setCreateNewTag] = useState(false);
   const [tag, setTag] = useState();
+  console.log(tag);
   return (
     <div className={classes.modal}>
       {!createNewTag && (
-        <>
-          <select name="tag" onChange={(e) => setTag(e.target.value)}>
-            <option value="option1">Option1</option>
-            <option value="option2">Option2</option>
-            <option value="option3">Option3</option>
-            <option value="option4">Option4</option>
-            <option value="option5">Option5</option>
-          </select>
+        <div className={classes.modalContent}>
+          <div className={classes.tagContainer}>
+            <div className={classes.tag}>tag name</div>
+            <div className={classes.tag}>tag name</div>
+            <div className={classes.tag}>tag name</div>
+            <div className={classes.tag}>tag name</div>
+          </div>
           <button onClick={(e) => setCreateNewTag(true)}>Add New Tag</button>
-        </>
+        </div>
       )}
       {createNewTag && (
         <>
@@ -35,7 +35,9 @@ const AddTagModal = (props) => {
           </select>
         </>
       )}
-      <button onClick={props.onclose}>Cancel</button>
+      <button onClick={props.onclose} className={classes.cancel}>
+        Cancel
+      </button>
     </div>
   );
 };
