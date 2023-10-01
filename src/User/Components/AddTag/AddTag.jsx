@@ -1,43 +1,100 @@
 import React, {Fragment, useState} from "react";
 import {createPortal} from "react-dom";
 import classes from "./AddTag.module.css";
+import Circle from "../../UI/Circle";
+import Cross from "../../../assets/cross.png";
 
 const AddTagModal = (props) => {
   const [color, setColor] = useState();
   const [createNewTag, setCreateNewTag] = useState(false);
-  const [tag, setTag] = useState();
-  console.log(tag);
+  const [tags, setTags] = useState([]);
+  console.log(tags);
   return (
     <div className={classes.modal}>
+      <button onClick={props.onclose} className={classes.cancel}>
+        <img
+          src={Cross}
+          style={{
+            width: "1rem",
+            height: "fit-content",
+            marginTop: "0.5rem",
+            cursor: "pointer",
+          }}
+        />
+      </button>
       {!createNewTag && (
         <div className={classes.modalContent}>
           <div className={classes.tagContainer}>
-            <div className={classes.tag}>tag name</div>
-            <div className={classes.tag}>tag name</div>
-            <div className={classes.tag}>tag name</div>
-            <div className={classes.tag}>tag name</div>
+            <div className={classes.tag}>
+              <Circle color="red" /> tagname
+            </div>
+            <div className={classes.tag}>
+              <Circle color="red" /> tagname
+            </div>
+            <div className={classes.tag}>
+              <Circle color="red" /> tagname
+            </div>
+            <div className={classes.tag}>
+              <Circle color="red" /> tagname
+            </div>
+            <div className={classes.tag}>
+              <Circle color="red" /> tagname
+            </div>
+            <div className={classes.tag}>
+              <Circle color="red" /> tagname
+            </div>
           </div>
           <button onClick={(e) => setCreateNewTag(true)}>Add New Tag</button>
         </div>
       )}
       {createNewTag && (
-        <>
-          <input type="text" placeholder="Enter tag name" />
-          <select
-            name="color"
-            id="color"
-            onChange={(e) => setColor(e.target.value)}
+        <div className={classes.modalContent}>
+          <div>
+            <input type="text" placeholder="Enter tag name" />
+            <br />
+            <label htmlFor="color">Pick a Color</label>
+            <div className={classes.colorPicker}>
+              <Circle
+                color="yellow"
+                onClick={() => {
+                  console.log("hello");
+                }}
+              />
+              <Circle
+                color="yellow"
+                onClick={() => {
+                  console.log("hello");
+                }}
+              />
+              <Circle
+                color="yellow"
+                onClick={() => {
+                  console.log("hello");
+                }}
+              />
+              <Circle
+                color="yellow"
+                onClick={() => {
+                  console.log("hello");
+                }}
+              />
+              <Circle
+                color="yellow"
+                onClick={() => {
+                  console.log("hello");
+                }}
+              />
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              setCreateNewTag(false);
+            }}
           >
-            <option value="Color1">Color1 </option>
-            <option value="Color1">Color2 </option>
-            <option value="Color1">Color3 </option>
-            <option value="Color1">Color4 </option>
-          </select>
-        </>
+            Choose from existing
+          </button>
+        </div>
       )}
-      <button onClick={props.onclose} className={classes.cancel}>
-        Cancel
-      </button>
     </div>
   );
 };
