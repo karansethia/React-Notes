@@ -1,15 +1,15 @@
 import React from "react";
 import NoteElement from "../NoteElement/NoteElement";
-import notesData from "../../../data";
 import classes from "./Notes.module.css";
+import {Link} from "react-router-dom";
 
-const Notes = (props) => {
-  const gridtype = props.gridtype;
+const Notes = ({gridtype, notes}) => {
+  console.log(notes);
   let cls = classes.containercol;
-  let num = notesData.length;
+  let num = notes.length;
   if (gridtype === "containergrid") {
     cls = classes.containergrid;
-    num = notesData.length;
+    num = notes.length;
     console.log(num);
   } else if (gridtype === "containercol") {
     cls = classes.containercol;
@@ -17,15 +17,16 @@ const Notes = (props) => {
   }
   return (
     <div className={cls}>
-      {notesData.slice(0, num).map((note) => (
-        <NoteElement
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          content={note.content}
-          includedtags={note.includedTags}
-          ispin={note.isPin}
-        />
+      {notes?.slice(0, num).map((note) => (
+        <Link to={`${note.id}`} key={note.id}>
+          <NoteElement
+            id={note.id}
+            title={note.title}
+            content={note.content}
+            includedtags={note.includedTags}
+            ispin={note.isPin}
+          />
+        </Link>
       ))}
     </div>
   );

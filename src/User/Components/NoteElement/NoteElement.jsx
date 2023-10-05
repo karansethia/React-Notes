@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./NoteElement.module.css";
 import notesData from "../../../data";
+import {Link} from "react-router-dom";
 
 const NoteElement = (props) => {
   // console.log(notesData);

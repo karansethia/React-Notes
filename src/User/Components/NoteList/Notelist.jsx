@@ -3,7 +3,7 @@ import classes from "./Notelist.module.css";
 import {Link} from "react-router-dom";
 import Notes from "../Notes/Notes";
 
-const Notelist = () => {
+const Notelist = (props) => {
   const [sort, setSort] = useState("recent");
 
   const selectHandler = (event) => {
@@ -11,6 +11,7 @@ const Notelist = () => {
     console.log(event.target.value);
   };
 
+  console.log(props.notes);
   return (
     <div className={classes.container}>
       <div className={classes.sort}>
@@ -23,7 +24,7 @@ const Notelist = () => {
         </div>
         <Link to="new">New Note</Link>
       </div>
-      <Notes gridtype="containergrid" />
+      <Notes notes={props.notes} gridtype="containergrid" />
     </div>
   );
 };

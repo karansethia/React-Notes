@@ -37,7 +37,7 @@ export const noteSlice = createSlice({
   },
   {
     id: 3,
-    title: "Travel Plans",
+    title: "Travel Plans to Argentina",
     content: "Tomorrow's travel schedule: Catch a flight at 2 PM to your destination. Arrive at the hotel by 4 PM for check-in. Remember to pack your passport, charger, and comfortable clothing.",
     includedTags: [{tagName: "Work", color: "#0085ff"}, {tagName:"Development", color:"green"}],
     isPin: false
@@ -72,12 +72,12 @@ export const noteSlice = createSlice({
   },
   {
     id: 8,
-    title: "Ideas for Project",
+    title: "Ideas for React API Application",
     content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
     includedTags: [{tagName: "Work", color: "#0085ff"}, {tagName:"Development", color:"green"}],
     isPin: true
   }
-  ]},
+  ],tags:[{title:"Work", color:"red"},{title:"Development",color:"green"},{title:"Home",color:"blue"}]},
   reducers: {
     pinStatus(state, action){
       //!get an id and match the note from the initial state and update the pin => !pin
