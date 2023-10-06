@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import classes from "./Navbar.module.css";
 import User from "../../../assets/user.png";
 import SideMenu from "../SideMenu/SideMenu";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={classes.nav}>
-        <div className={classes.logo}>
+        <Link to="/user" className={classes.logo}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="136"
@@ -44,7 +45,7 @@ const Navbar = () => {
               fill="white"
             />
           </svg>
-        </div>
+        </Link>
 
         <div className={classes.infocontainer}>
           <div className={classes.info}>

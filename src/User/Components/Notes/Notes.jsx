@@ -18,7 +18,7 @@ const Notes = ({gridtype, notes}) => {
   return (
     <div className={cls}>
       {notes?.slice(0, num).map((note) => (
-        <Link to={`${note.id}`} key={note.id}>
+        <Link to={`/user/${note.id}`} key={note.id}>
           <NoteElement
             id={note.id}
             title={note.title}

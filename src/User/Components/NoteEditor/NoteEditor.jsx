@@ -1,7 +1,18 @@
 import React, {useState} from "react";
+import {useParams} from "react-router-dom";
 import classes from "./NoteEditor.module.css";
 import AddTag from "../AddTag/AddTag";
+import {useSelector} from "react-redux";
 const NoteEditor = () => {
+  const params = useParams();
+  const data = useSelector((state) => state.stateNotes.notes);
+  let currentNote = null;
+  if (params.noteId) {
+    const currentNoteId = data.findIndex((note) => note.id == params.noteId);
+    currentNote = data[currentNoteId];
+    console.log(currentNote);
+  }
+
   const [showTagModal, setShowTagModal] = useState(false);
 
   const addTagHandler = () => {
@@ -15,7 +26,13 @@ const NoteEditor = () => {
       {showTagModal && <AddTag onclose={closeTagHandler} />}
       <div className={classes.wrapper}>
         <div className={classes.header}>
-          <input type="text" name="title" placeholder="Enter title" />
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter title"
+            value={currentNote ? currentNote.title : ""}
+            onChange={() => {}}
+          />
           <hr />
         </div>
         <div className={classes.cwrapper}>
@@ -26,6 +43,8 @@ const NoteEditor = () => {
               cols="30"
               rows="10"
               placeholder="Enter Notes here"
+              value={currentNote ? currentNote.content : ""}
+              onChange={() => {}}
             ></textarea>
           </div>
           <div className={classes.sidebar}>
