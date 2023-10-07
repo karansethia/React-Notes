@@ -62,11 +62,11 @@ const NoteEditor = () => {
             onExport={exportHandler}
             onDelete={deleteHandler}
             onPin={pinHandler}
-            isPinned={currentNote.isPin}
+            isPinned={currentNote?.isPin}
           />
         </div>
         <div className={classes.tagbar}>
-          {currentNote.includedTags.map((note) => (
+          {currentNote?.includedTags.map((note) => (
             <div className={classes.tag} key={note.tagName}>
               <h4>{note.tagName}</h4>
             </div>
