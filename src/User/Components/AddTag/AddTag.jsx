@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from "react";
 import {createPortal} from "react-dom";
+import {useSelector} from "react-redux";
 import classes from "./AddTag.module.css";
 import Circle from "../../UI/Circle";
 import Cross from "../../../assets/cross.png";
@@ -8,6 +9,7 @@ const AddTagModal = (props) => {
   const [color, setColor] = useState();
   const [createNewTag, setCreateNewTag] = useState(false);
   const [tags, setTags] = useState([]);
+  const data = useSelector((state) => state.stateNotes.tags);
   console.log(tags);
   return (
     <div className={classes.modal}>
@@ -25,24 +27,12 @@ const AddTagModal = (props) => {
       {!createNewTag && (
         <div className={classes.modalContent}>
           <div className={classes.tagContainer}>
-            <div className={classes.tag}>
-              <Circle color="red" /> tagname
-            </div>
-            <div className={classes.tag}>
-              <Circle color="red" /> tagname
-            </div>
-            <div className={classes.tag}>
-              <Circle color="red" /> tagname
-            </div>
-            <div className={classes.tag}>
-              <Circle color="red" /> tagname
-            </div>
-            <div className={classes.tag}>
-              <Circle color="red" /> tagname
-            </div>
-            <div className={classes.tag}>
-              <Circle color="red" /> tagname
-            </div>
+            {data.map((tag) => (
+              <div className={classes.tag} key={tag.title}>
+                <Circle color={tag.color} />
+                <p>{tag.title}</p>
+              </div>
+            ))}
           </div>
           <button onClick={(e) => setCreateNewTag(true)}>Add New Tag</button>
         </div>

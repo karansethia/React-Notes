@@ -62,12 +62,15 @@ const NoteEditor = () => {
             onExport={exportHandler}
             onDelete={deleteHandler}
             onPin={pinHandler}
+            isPinned={currentNote.isPin}
           />
         </div>
         <div className={classes.tagbar}>
-          <div className={classes.tag}>
-            <h4>Development</h4>
-          </div>
+          {currentNote.includedTags.map((note) => (
+            <div className={classes.tag} key={note.tagName}>
+              <h4>{note.tagName}</h4>
+            </div>
+          ))}
           <button className={classes.tagBtn} onClick={addTagHandler}>
             Add Tag +{" "}
           </button>

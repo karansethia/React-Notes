@@ -13,3 +13,4 @@ export const deleteHandler = () => {
 export const pinHandler = () => {
   console.log('sidebtn clicked : pin')
 }
+export const removeTaghandler = () => {}

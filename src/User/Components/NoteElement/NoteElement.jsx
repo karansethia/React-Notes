@@ -1,10 +1,9 @@
 import React from "react";
 import classes from "./NoteElement.module.css";
+// import {useSelector} from "@reduxjs/toolkit";
 import notesData from "../../../data";
-import {Link} from "react-router-dom";
 
 const NoteElement = (props) => {
-  // console.log(notesData);
   const noteTitle = props.title.split(" ");
   var title = "";
   if (noteTitle.length > 3) {
@@ -20,6 +19,7 @@ const NoteElement = (props) => {
   } else {
     title = noteTitle.join(" ");
   }
+  console.log(props.includedtags);
 
   return (
     <div
@@ -31,22 +31,11 @@ const NoteElement = (props) => {
         <h3>{title}</h3>
       </div>
       <div className={classes.tagContainer}>
-        <svg width="14" height="14">
-          <circle
-            cx="6"
-            cy="6"
-            r="6"
-            fill={notesData[0].includedTags[0].color}
-          />
-        </svg>
-        <svg width="14" height="14">
-          <circle
-            cx="6"
-            cy="6"
-            r="6"
-            fill={notesData[0].includedTags[1].color}
-          />
-        </svg>
+        {props.includedtags.map((tag) => (
+          <svg width="14" height="14">
+            <circle cx="6" cy="6" r="6" fill={tag.color} />
+          </svg>
+        ))}
       </div>
     </div>
   );
