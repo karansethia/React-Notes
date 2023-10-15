@@ -32,7 +32,7 @@ const NoteElement = (props) => {
       </div>
       <div className={classes.tagContainer}>
         {props.includedtags.map((tag) => (
-          <svg width="14" height="14">
+          <svg width="14" height="14" key={tag.color}>
             <circle cx="6" cy="6" r="6" fill={tag.color} />
           </svg>
         ))}

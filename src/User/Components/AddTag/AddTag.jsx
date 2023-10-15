@@ -6,11 +6,10 @@ import Circle from "../../UI/Circle";
 import Cross from "../../../assets/cross.png";
 
 const AddTagModal = (props) => {
-  const [color, setColor] = useState();
   const [createNewTag, setCreateNewTag] = useState(false);
   const [tags, setTags] = useState([]);
   const data = useSelector((state) => state.stateNotes.tags);
-  console.log(tags);
+  const uiData = useSelector((state) => state.ui.noteColor);
   const onAddColorHandler = () => {};
   return (
     <div className={classes.modal}>
@@ -45,11 +44,9 @@ const AddTagModal = (props) => {
             <br />
             <label htmlFor="color">Pick a Color</label>
             <div className={classes.colorPicker}>
-              <Circle color="yellow" onClick={onAddColorHandler} />
-              <Circle color="#f75590" onClick={onAddColorHandler} />
-              <Circle color="#5ef38c" onClick={onAddColorHandler} />
-              <Circle color="#e6aa68" onClick={onAddColorHandler} />
-              <Circle color="#a5be00" onClick={onAddColorHandler} />
+              {uiData.map((color) => (
+                <Circle color={color} onClick={onAddColorHandler} />
+              ))}
             </div>
           </div>
           <button

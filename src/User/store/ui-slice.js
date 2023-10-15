@@ -16,26 +16,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const uiSlice = createSlice({
   name : "UI",
-  initialState: {darkTheme:true,isLoggedIn:true,sortRecent: true, showTag: null,modalInfo:{modelMessage:null,showModal:true}},
+  initialState: {user : {darkTheme:true,isLoggedIn:true,sortRecent: true, sortTag:null},noteColor : ['yellow',"#f75590","#5ef38c","#e6aa68","#a5be00"]},
   reducers: {
     changeTheme(state){
       //!set the theme to !darkTheme
-      state.darkTheme = !state.darkTheme
+      state.user.darkTheme = !state.darkTheme
     },
-    logout(state){
+    logout(state, action){
       //! set isLoggedIn to false
-      state.isLoggedIn(false);
+      state.user.isLoggedIn(action.payload);
     },
     sortByRecent(state){
       //! set sortRecent to !sortRecent
-      state.sortRecent = !state.sortRecent;
+      state.user.sortRecent = !state.sortRecent;
     },
     sortTag(state, action){
-      state.sortTag = action.payload
-    },
-    showModal(state){
-      state.modalInfo.modelMessage = action.payload;
-      state.modalInfo.showModal = true;
+      state.user.sortTag = action.payload
     }
   }
 });
