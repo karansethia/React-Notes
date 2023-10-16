@@ -13,6 +13,7 @@
 }
 
 .function {
+  cursor: pointer;
   background-color: #2C2C2C;
   margin: 10px;
   padding: 8px 10px 8px 10px;

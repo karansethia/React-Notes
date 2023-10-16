@@ -16,7 +16,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const uiSlice = createSlice({
   name : "UI",
-  initialState: {user : {darkTheme:true,isLoggedIn:true,sortRecent: true, sortTag:null},noteColor : ['yellow',"#f75590","#5ef38c","#e6aa68","#a5be00"]},
+  initialState: {user : {darkTheme:true,isLoggedIn:true,sortRecent: true, sortTag:''},noteColor : ['yellow',"#f75590","#5ef38c","#e6aa68","#a5be00"]},
   reducers: {
     changeTheme(state){
       //!set the theme to !darkTheme

@@ -19,7 +19,7 @@ const NoteElement = (props) => {
   } else {
     title = noteTitle.join(" ");
   }
-  console.log(props.includedtags);
+  // console.log(props.includedtags);
 
   return (
     <div
