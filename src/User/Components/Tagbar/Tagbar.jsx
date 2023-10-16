@@ -9,11 +9,26 @@ const Tagbar = () => {
   const tags = useSelector((state) => state.stateNotes.tags);
   const sorttag = useSelector((state) => state.ui.user.sortTag);
   const dispatch = useDispatch();
+  const setTagHandler = (title) => {
+    if (isTagActive) {
+      dispatch(uiActions.sortTag(""));
+      setIsTagActive(false);
+    } else {
+      dispatch(uiActions.sortTag(title));
+      setIsTagActive(true);
+    }
+  };
 
   return (
     <div className={classes.tagbar}>
       {tags.map((tag) => (
-        <div className={classes.tag} key={tag.title}>
+        <div
+          className={classes.tag}
+          key={tag.title}
+          onClick={() => {
+            setTagHandler(tag.title);
+          }}
+        >
           {isTagActive && tag.title === sorttag && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -21,10 +36,6 @@ const Tagbar = () => {
               height="18"
               viewBox="0 0 27 18"
               fill="none"
-              onClick={() => {
-                setIsTagActive(false);
-                dispatch(uiActions.sortTag(""));
-              }}
             >
               <path
                 d="M5.93178 0.314476L4.31448 1.93178C3.89517 2.35108 3.89517 3.06988 4.31448 3.54908L9.82529 9.0599L4.31448 14.5707C3.89517 14.99 3.89517 15.7088 4.31448 16.188L5.87188 17.7454C6.29118 18.1647 7.00998 18.1647 7.48919 17.7454L13 12.2346L18.5108 17.7454C18.9301 18.1647 19.6489 18.1647 20.1281 17.7454L21.6855 16.188C22.1048 15.7687 22.1048 15.0499 21.6855 14.5707L16.1747 9L21.6855 3.48919C22.1048 3.06988 22.1048 2.35108 21.6855 1.87188L20.1281 0.314476C19.7088 -0.104825 18.99 -0.104825 18.5108 0.314476L13 5.82529L7.48919 0.314476C7.06988 -0.104825 6.35108 -0.104825 5.93178 0.314476Z"
@@ -39,22 +50,11 @@ const Tagbar = () => {
               height="18"
               viewBox="0 0 18 18"
               fill="none"
-              onClick={() => {
-                dispatch(uiActions.sortTag(tag.title));
-                setIsTagActive(true);
-              }}
             >
               <circle cx="9" cy="9" r="9" fill={tag.color} />
             </svg>
           )}
-          <h4
-            onClick={() => {
-              dispatch(uiActions.sortTag(tag.title));
-              setIsTagActive(true);
-            }}
-          >
-            {tag.title}
-          </h4>
+          <h4>{tag.title}</h4>
         </div>
       ))}
     </div>
