@@ -26,56 +26,64 @@ export const noteSlice = createSlice({
     title: "Meeting Agenda along with clients from Italy",
     content: "Prepare for the upcoming meeting by outlining project updates, discussing timeline adjustments, and addressing any potential roadblocks. Ensure all team members are informed and ready to contribute.",
     includedTags: [{tagName: "Work", color: "red"}, {tagName:"Development", color:"green"}],
-    isPin: true
+    isPin: true,
+    addedDate: new Date('2022-12-12')
   },
   {
     id: 2,
     title: "Grocery List",
     content: "Don't forget to pick up essential items from the store: a gallon of milk, a dozen eggs, a loaf of whole-grain bread, and a variety of fresh vegetables for the week's meals.",
     includedTags: [ {tagName:"Home", color:"blue"}],
-    isPin: false
+    isPin: false,
+    addedDate: new Date('2012-11-12')
   },
   {
     id: 3,
     title: "Travel Plans to Argentina",
     content: "Tomorrow's travel schedule: Catch a flight at 2 PM to your destination. Arrive at the hotel by 4 PM for check-in. Remember to pack your passport, charger, and comfortable clothing.",
     includedTags: [ {tagName:"Development", color:"green"}],
-    isPin: false
+    isPin: false,
+    addedDate: new Date('2017-10-24')
   },
   {
     id: 4,
     title: "Book Recommendations",
     content: "Two captivating books to read: 'The Alchemist' by Paulo Coelho, a story of self-discovery, and '1984' by George Orwell, a dystopian classic that explores the power of government control.",
     includedTags: [{tagName: "Work", color: "red"}, {tagName:"Development", color:"green"}],
-    isPin: false
+    isPin: false,
+    addedDate: new Date('2021-12-25')
   },
   {
     id: 5,
     title: "Ideas for Project",
     content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
     includedTags: [{tagName: "Work", color: "red"}, {tagName:"Development", color:"green"}],
-    isPin: true
+    isPin: true,
+    addedDate: new Date('2020-04-31')
   },
   {
     id: 6,
     title: "Ideas for Project",
     content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
     includedTags: [{tagName: "Work", color: "red"}, {tagName:"Development", color:"green"}],
-    isPin: true
+    isPin: true,
+    addedDate: new Date('2019-02-16')
   },
   {
     id: 7,
     title: "Ideas for Project",
     content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
     includedTags: [{tagName: "Work", color: "red"}, {tagName:"Development", color:"green"}],
-    isPin: true
+    isPin: true,
+    addedDate: new Date('2022-12-11')
   },
   {
     id: 8,
     title: "Ideas for React API Application",
     content: "Generate engaging content for the blog by writing about productivity tips to boost efficiency and a comparison of popular programming languages, highlighting their strengths and use cases.",
     includedTags: [{tagName: "Work", color: "red"}, {tagName:"Development", color:"green"}],
-    isPin: true
+    isPin: true,
+    addedDate: new Date('2022-10-12')
   }
   ],tags:[{title:"Work", color:"red"},{title:"Development",color:"green"},{title:"Home",color:"blue"}]},
   reducers: {

@@ -6,17 +6,30 @@ import {useSelector} from "react-redux";
 
 const Notes = ({gridtype, notes}) => {
   const sortbytag = useSelector((state) => state.ui.user.sortTag);
-  let sortedNotes = [];
+  const sortby = useSelector((state) => state.ui.user.sortRecent);
+  console.log(sortby);
+  //todo create a custom hook that filter this data
+  let filteredNotes = [];
   if (sortbytag !== "") {
     for (const note of notes) {
       for (const tag of note.includedTags) {
         if (tag.tagName === sortbytag) {
-          sortedNotes.push(note);
+          filteredNotes.push(note);
         }
       }
     }
   } else {
-    sortedNotes = notes;
+    filteredNotes = notes;
+  }
+  let sortedNotes = [];
+  if (sortby === "recent") {
+    sortedNotes = filteredNotes
+      .slice()
+      .sort((a, b) => a.addedDate - b.addedDate);
+  } else if (sortby === "old") {
+    sortedNotes = filteredNotes
+      .slice()
+      .sort((a, b) => b.addedDate - a.addedDate);
   }
 
   console.log(sortedNotes);
