@@ -126,6 +126,9 @@ export const noteSlice = createSlice({
     deleteAllNotes(state, action){
       //! empty the state
       state.notes = state.notes.splice(0,state.notes.length)
+    },
+    copyNote(state, action){
+      //! copy the note content to clipboard
     }
   }
 })

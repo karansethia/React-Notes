@@ -1,16 +1,9 @@
 import React, {useState} from "react";
 import {useParams} from "react-router-dom";
-import classes from "./NoteEditor.module.css";
 import AddTag from "../AddTag/AddTag";
-import {useSelector} from "react-redux";
-import Sidebar from "../Sidebar/Sidebar";
-import {
-  saveHandler,
-  copyHandler,
-  exportHandler,
-  pinHandler,
-  deleteHandler,
-} from "./Sidebtnfunctions";
+import {useSelector, useDispatch} from "react-redux";
+import {noteActions} from "../../store/note-slice";
+import Editor from "./Editor";
 const NoteEditor = () => {
   const params = useParams();
   const data = useSelector((state) => state.stateNotes.notes);
@@ -21,6 +14,43 @@ const NoteEditor = () => {
     console.log(currentNote);
   }
 
+  const dispatch = useDispatch;
+
+  //*sidebtn logic and dispatch actions
+  const saveHandler = () => {
+    console.log("sidebtn clicked : save");
+    dispatch(noteActions.saveNote({}));
+  };
+  const copyHandler = () => {
+    console.log("sidebtn clicked : copy");
+    dispatch(noteActions.copyNote);
+  };
+  const exportHandler = () => {
+    console.log("sidebtn clicked : export");
+    dispatch(noteActions.shareNote);
+  };
+  const deleteHandler = () => {
+    console.log("sidebtn clicked : delete");
+    dispatch(noteActions.deleteNote);
+  };
+  const pinHandler = () => {
+    console.log("sidebtn clicked : pin");
+    dispatch(noteActions.pinStatus);
+  };
+  const removeTagHandler = () => {};
+
+  //* sidebtn object for functions
+
+  const sideFunctions = {
+    save: saveHandler,
+    copy: copyHandler,
+    export: exportHandler,
+    delete: deleteHandler,
+    pin: pinHandler,
+    removeTag: removeTagHandler,
+  };
+
+  //* Logic for toggling tag modal
   const [showTagModal, setShowTagModal] = useState(false);
 
   const addTagHandler = () => {
@@ -33,49 +63,11 @@ const NoteEditor = () => {
   return (
     <>
       {showTagModal && <AddTag onclose={closeTagHandler} />}
-      <div className={classes.wrapper}>
-        <div className={classes.header}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Enter title"
-            value={currentNote ? currentNote.title : ""}
-            onChange={() => {}}
-          />
-          <hr />
-        </div>
-        <div className={classes.cwrapper}>
-          <div className={classes.content}>
-            <textarea
-              name="content"
-              id="content"
-              cols="30"
-              rows="10"
-              placeholder="Enter Notes here"
-              value={currentNote ? currentNote.content : ""}
-              onChange={() => {}}
-            ></textarea>
-          </div>
-          <Sidebar
-            onSave={saveHandler}
-            onCopy={copyHandler}
-            onExport={exportHandler}
-            onDelete={deleteHandler}
-            onPin={pinHandler}
-            isPinned={currentNote?.isPin}
-          />
-        </div>
-        <div className={classes.tagbar}>
-          {currentNote?.includedTags.map((note) => (
-            <div className={classes.tag} key={note.tagName}>
-              <h4>{note.tagName}</h4>
-            </div>
-          ))}
-          <button className={classes.tagBtn} onClick={addTagHandler}>
-            Add Tag +{" "}
-          </button>
-        </div>
-      </div>
+      <Editor
+        currentNote={currentNote}
+        onAdd={addTagHandler}
+        onSideAction={sideFunctions}
+      />
     </>
   );
 };

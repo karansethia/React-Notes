@@ -29,7 +29,7 @@ const AddTagModal = (props) => {
           <div className={classes.tagContainer}>
             {data.map((tag) => (
               <div className={classes.tag} key={tag.title}>
-                <Circle color={tag.color} />
+                <Circle color={tag.color} key={tag.color} />
                 <p>{tag.title}</p>
               </div>
             ))}
