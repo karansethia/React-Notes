@@ -13,7 +13,7 @@ const Notelist = (props) => {
     dispatch(uiActions.sortByRecent(event.target.value));
   };
 
-  console.log(props.notes);
+  // console.log(props.notes);
   return (
     <div className={classes.container}>
       <div className={classes.sort}>

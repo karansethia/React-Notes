@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./NoteEditor.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Editor = ({currentNote, onAdd, onSideAction}) => {
-  console.log(currentNote);
-  console.log(onSideAction);
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+    includedTags: [],
+    isPin: false,
+  });
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>

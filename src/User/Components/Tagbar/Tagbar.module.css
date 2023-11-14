@@ -11,22 +11,3 @@
   margin: 20px;
   padding: 1rem 0rem
 }
-
-.tag {
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0.3rem 0.7rem;
-  padding: 0.5rem 1rem;
-  align-items: center;
-  background-color: #00034A;
-  border-radius: 0.5rem;
-  color: #fff;
-  font-size: 0.7rem;
-  /* transition: all 1s ease-in-out; */
-}
-
-.active {
-  background-color: #5E5EDC;
-}

@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 
 const NoteDash = () => {
   const data = useSelector((state) => state.stateNotes.notes);
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className={classes.container}>

@@ -16,7 +16,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const uiSlice = createSlice({
   name : "UI",
-  initialState: {user : {darkTheme:true,isLoggedIn:true,sortRecent: 'recent', sortTag:''},noteColor : ['yellow',"#f75590","#5ef38c","#e6aa68","#a5be00"]},
+  initialState: {user : {darkTheme:true,isLoggedIn:true,sortRecent: 'recent', sortTag:[]},noteColor : ['yellow',"#f75590","#5ef38c","#e6aa68","#a5be00"]},
   reducers: {
     changeTheme(state){
       //!set the theme to !darkTheme
@@ -31,7 +31,14 @@ export const uiSlice = createSlice({
       state.user.sortRecent = action.payload;
     },
     sortTag(state, action){
-      state.user.sortTag = action.payload
+      if(state.user.sortTag.indexOf(action.payload) == -1){
+        state.user.sortTag.push(action.payload);
+      }
+    },
+    removeTag(state, action){
+    state.user.sortTag = state.user.sortTag.filter(function (tag) {
+    return tag !== action.payload;
+});
     }
   }
 });
