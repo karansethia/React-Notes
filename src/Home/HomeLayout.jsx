@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
-import Navbar from "./Pages/Navbar";
 import React from "react";
+import Navbar from "./Components/Navbar/Navbar";
 
 const HomeLayout = () => {
   return (
