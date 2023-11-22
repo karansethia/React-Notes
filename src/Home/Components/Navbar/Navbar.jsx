@@ -3,7 +3,7 @@ import classes from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <nav className={classes.nav}>
+    <nav className="flex justify-between px-16 py-3 items-center fixed top-0 bg-[#11192C] w-full h-fit">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="136"
@@ -36,7 +36,9 @@ const Navbar = () => {
           fill="white"
         />
       </svg>
-      <button className={classes.btn}>Login</button>
+      <button className="bg-[#252AD0] px-5 py-1 cursor-pointer rounded-md text-white text-sm">
+        Login
+      </button>
     </nav>
   );
 };
