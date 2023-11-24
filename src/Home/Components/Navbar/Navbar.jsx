@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -35,9 +36,12 @@ const Navbar = () => {
           fill="white"
         />
       </svg>
-      <button className="bg-[#252AD0] px-5 py-1 cursor-pointer rounded-md text-white text-sm">
+      <Link
+        to="/login"
+        className="bg-[#252AD0] px-5 py-1 cursor-pointer rounded-md text-white text-sm"
+      >
         Login
-      </button>
+      </Link>
     </nav>
   );
 };

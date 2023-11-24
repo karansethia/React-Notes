@@ -7,10 +7,19 @@ import Cross from "../../../assets/cross.png";
 
 const AddTagModal = (props) => {
   const [createNewTag, setCreateNewTag] = useState(false);
-  const [tags, setTags] = useState([]);
+  const [tagTitle, setTagTitle] = useState();
+  const [tagColor, setTagColor] = useState();
   const data = useSelector((state) => state.stateNotes.tags);
   const uiData = useSelector((state) => state.ui.noteColor);
-  const onAddColorHandler = () => {};
+  const onCreateNewTag = () => {
+    if (tagTitle && tagColor) {
+      const tag = {
+        title: tagTitle,
+        color: tagColor,
+      };
+      console.log(tag);
+    }
+  };
   return (
     <div className={classes.modal}>
       <button onClick={props.onclose} className={classes.cancel}>
@@ -28,7 +37,13 @@ const AddTagModal = (props) => {
         <div className={classes.modalContent}>
           <div className={classes.tagContainer}>
             {data.map((tag) => (
-              <div className={classes.tag} key={tag.title}>
+              <div
+                className={classes.tag}
+                key={tag.title}
+                onClick={() => {
+                  console.log({title: tag.title, color: tag.color});
+                }}
+              >
                 <Circle color={tag.color} key={tag.color} />
                 <p>{tag.title}</p>
               </div>
@@ -40,22 +55,35 @@ const AddTagModal = (props) => {
       {createNewTag && (
         <div className={classes.modalContent}>
           <div>
-            <input type="text" placeholder="Enter tag name" />
+            <input
+              type="text"
+              placeholder="Enter tag name"
+              onBlur={(e) => setTagTitle(e.target.value)}
+            />
             <br />
             <label htmlFor="color">Pick a Color</label>
             <div className={classes.colorPicker}>
               {uiData.map((color) => (
-                <Circle color={color} onClick={onAddColorHandler} />
+                <Circle
+                  color={color}
+                  key={color}
+                  onClick={() => {
+                    setTagColor(color);
+                  }}
+                />
               ))}
             </div>
           </div>
-          <button
-            onClick={() => {
-              setCreateNewTag(false);
-            }}
-          >
-            Choose from existing
-          </button>
+          <div>
+            <button
+              onClick={() => {
+                setCreateNewTag(false);
+              }}
+            >
+              Choose from existing
+            </button>
+            <button onClick={onCreateNewTag}>Add</button>
+          </div>
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./NoteElement.module.css";
 // import {useSelector} from "@reduxjs/toolkit";
-import notesData from "../../../data";
+// import notesData from "../../../data";
 
 const NoteElement = (props) => {
   const noteTitle = props.title.split(" ");
