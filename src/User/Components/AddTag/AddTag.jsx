@@ -14,10 +14,10 @@ const AddTagModal = (props) => {
   const onCreateNewTag = () => {
     if (tagTitle && tagColor) {
       const tag = {
-        title: tagTitle,
+        tagName: tagTitle,
         color: tagColor,
       };
-      console.log(tag);
+      props.onAddTag(tag);
     }
   };
   return (
@@ -42,6 +42,8 @@ const AddTagModal = (props) => {
                 key={tag.title}
                 onClick={() => {
                   console.log({title: tag.title, color: tag.color});
+                  props.onAddTag({tagName: tag.title, color: tag.color});
+                  props.onclose();
                 }}
               >
                 <Circle color={tag.color} key={tag.color} />
@@ -102,7 +104,7 @@ const AddTag = (props) => {
         document.getElementById("backdrop")
       )}
       {createPortal(
-        <AddTagModal onclose={props.onclose} />,
+        <AddTagModal onclose={props.onclose} onAddTag={props.onAddTag} />,
         document.getElementById("addtag")
       )}
     </Fragment>

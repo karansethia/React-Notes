@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import AddTag from "../AddTag/AddTag";
 import {useSelector, useDispatch} from "react-redux";
@@ -7,13 +7,15 @@ import Editor from "./Editor";
 const NoteEditor = () => {
   const params = useParams();
   const data = useSelector((state) => state.stateNotes.notes);
-  let currentNote = null;
-  if (params.noteId) {
-    const currentNoteId = data.findIndex((note) => note.id == params.noteId);
-    currentNote = data[currentNoteId];
-    console.log(currentNote);
-  }
+  const [note, setNote] = useState();
 
+  useEffect(() => {
+    if (params.noteId) {
+      const currentNoteId = data.findIndex((note) => note.id == params.noteId);
+      setNote(data[currentNoteId]);
+    }
+  }, [params.noteId, data]);
+  // console.log(note.id);
   const dispatch = useDispatch;
 
   //*sidebtn logic and dispatch actions
@@ -53,19 +55,40 @@ const NoteEditor = () => {
   //* Logic for toggling tag modal
   const [showTagModal, setShowTagModal] = useState(false);
 
-  const addTagHandler = () => {
+  const showTagHandler = () => {
     setShowTagModal(true);
   };
   const closeTagHandler = () => {
     setShowTagModal(false);
   };
 
+  //* logic for creating adding tags
+  const onAddTagHandler = (tag) => {
+    console.log(tag);
+    const exists = note.includedTags.filter(
+      (note) => note.tagName == tag.tagName
+    );
+    if (exists.length == 0) {
+      setNote((prevNote) => {
+        const updatedNote = {
+          ...prevNote,
+          includedTags: [...prevNote.includedTags, tag],
+        };
+        return updatedNote;
+      });
+    }
+  };
+
+  console.log(note?.includedTags);
+
   return (
     <>
-      {showTagModal && <AddTag onclose={closeTagHandler} />}
+      {showTagModal && (
+        <AddTag onclose={closeTagHandler} onAddTag={onAddTagHandler} />
+      )}
       <Editor
-        currentNote={currentNote}
-        onAdd={addTagHandler}
+        currentNote={note}
+        onAdd={showTagHandler}
         onSideAction={sideFunctions}
       />
     </>
