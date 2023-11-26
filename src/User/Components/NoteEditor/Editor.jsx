@@ -1,8 +1,16 @@
-import React, {useState} from "react";
+import React, {useRef} from "react";
 import classes from "./NoteEditor.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 
-const Editor = ({currentNote, onAdd, onSideAction}) => {
+const Editor = ({
+  currentNote,
+  onAdd,
+  onSideAction,
+  onEditTitle,
+  onEditContent,
+}) => {
+  const titleRef = useRef();
+  const contentRef = useRef();
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
@@ -10,8 +18,9 @@ const Editor = ({currentNote, onAdd, onSideAction}) => {
           type="text"
           name="title"
           placeholder="Enter title"
-          value={currentNote ? currentNote.title : ""}
-          onChange={() => {}}
+          defaultValue={currentNote ? currentNote.title : ""}
+          ref={titleRef}
+          onBlur={() => onEditTitle(titleRef.current.value)}
         />
         <hr />
       </div>
@@ -23,8 +32,9 @@ const Editor = ({currentNote, onAdd, onSideAction}) => {
             cols="30"
             rows="10"
             placeholder="Enter Notes here"
-            value={currentNote ? currentNote.content : ""}
-            onChange={() => {}}
+            defaultValue={currentNote ? currentNote.content : ""}
+            ref={contentRef}
+            onBlur={() => onEditContent(contentRef.current.value)}
           ></textarea>
         </div>
         <Sidebar
@@ -37,11 +47,12 @@ const Editor = ({currentNote, onAdd, onSideAction}) => {
         />
       </div>
       <div className={classes.tagbar}>
-        {currentNote?.includedTags.map((note) => (
-          <div className={classes.tag} key={note.tagName}>
-            <h4>{note.tagName}</h4>
-          </div>
-        ))}
+        {currentNote?.includedTags &&
+          currentNote?.includedTags.map((note) => (
+            <div className={classes.tag} key={note.tagName}>
+              <h4>{note.tagName}</h4>
+            </div>
+          ))}
         <button className={classes.tagBtn} onClick={onAdd}>
           Add Tag +{" "}
         </button>

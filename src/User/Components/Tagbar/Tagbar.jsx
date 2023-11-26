@@ -10,7 +10,7 @@ const Tagbar = () => {
   return (
     <div className={classes.tagbar}>
       {tags.map((tag) => (
-        <Tag tag={tag} key={tag.title} />
+        <Tag tag={tag} key={tag.tagName} />
       ))}
     </div>
   );

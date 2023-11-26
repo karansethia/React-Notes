@@ -85,7 +85,7 @@ export const noteSlice = createSlice({
     isPin: true,
     addedDate: new Date('2022-10-12')
   }
-  ],tags:[{title:"Work", color:"red"},{title:"Development",color:"green"},{title:"Home",color:"blue"}]},
+  ],tags:[{tagName:"Work", color:"red"},{tagName:"Development",color:"green"},{tagName:"Home",color:"blue"}]},
   reducers: {
     pinStatus(state, action){
       //!get an id and match the note from the initial state and update the pin => !pin

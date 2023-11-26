@@ -18,6 +18,7 @@ const AddTagModal = (props) => {
         color: tagColor,
       };
       props.onAddTag(tag);
+      props.onclose();
     }
   };
   return (
@@ -39,15 +40,14 @@ const AddTagModal = (props) => {
             {data.map((tag) => (
               <div
                 className={classes.tag}
-                key={tag.title}
+                key={tag.tagName}
                 onClick={() => {
-                  console.log({title: tag.title, color: tag.color});
-                  props.onAddTag({tagName: tag.title, color: tag.color});
+                  props.onAddTag({tagName: tag.tagName, color: tag.color});
                   props.onclose();
                 }}
               >
                 <Circle color={tag.color} key={tag.color} />
-                <p>{tag.title}</p>
+                <p>{tag.tagName}</p>
               </div>
             ))}
           </div>

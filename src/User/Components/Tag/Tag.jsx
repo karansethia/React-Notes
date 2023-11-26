@@ -21,12 +21,12 @@ const Tag = ({tag}) => {
   return (
     <div
       className={classes.tag}
-      key={tag.title}
+      key={tag.tagName}
       onClick={() => {
-        setTagHandler(tag.title);
+        setTagHandler(tag.tagName);
       }}
     >
-      {isTagActive && sorttag.includes(tag.title) && (
+      {isTagActive && sorttag.includes(tag.tagName) && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="27"
@@ -41,7 +41,7 @@ const Tag = ({tag}) => {
           />
         </svg>
       )}
-      {(!isTagActive || !sorttag.includes(tag.title)) && (
+      {(!isTagActive || !sorttag.includes(tag.tagName)) && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -52,7 +52,7 @@ const Tag = ({tag}) => {
           <circle cx="9" cy="9" r="9" fill={tag.color} />
         </svg>
       )}
-      <h4>{tag.title}</h4>
+      <h4>{tag.tagName}</h4>
     </div>
   );
 };

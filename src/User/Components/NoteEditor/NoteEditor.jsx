@@ -7,7 +7,14 @@ import Editor from "./Editor";
 const NoteEditor = () => {
   const params = useParams();
   const data = useSelector((state) => state.stateNotes.notes);
-  const [note, setNote] = useState();
+  const [note, setNote] = useState({
+    id: null,
+    title: "",
+    content: "",
+    includedTags: [],
+    isPin: false,
+    addedDate: null,
+  });
 
   useEffect(() => {
     if (params.noteId) {
@@ -15,8 +22,7 @@ const NoteEditor = () => {
       setNote(data[currentNoteId]);
     }
   }, [params.noteId, data]);
-  // console.log(note.id);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   //*sidebtn logic and dispatch actions
   const saveHandler = () => {
@@ -64,7 +70,6 @@ const NoteEditor = () => {
 
   //* logic for creating adding tags
   const onAddTagHandler = (tag) => {
-    console.log(tag);
     const exists = note.includedTags.filter(
       (note) => note.tagName == tag.tagName
     );
@@ -79,7 +84,25 @@ const NoteEditor = () => {
     }
   };
 
-  console.log(note?.includedTags);
+  //* logic for changing the note in local state
+  const onEditTitleHandler = (title) => {
+    setNote((prevNote) => {
+      const updatedNote = {
+        ...prevNote,
+        title: title,
+      };
+      return updatedNote;
+    });
+  };
+  const onEditContentHandler = (content) => {
+    setNote((prevNote) => {
+      const updatedNote = {
+        ...prevNote,
+        content: content,
+      };
+      return updatedNote;
+    });
+  };
 
   return (
     <>
@@ -90,6 +113,8 @@ const NoteEditor = () => {
         currentNote={note}
         onAdd={showTagHandler}
         onSideAction={sideFunctions}
+        onEditTitle={onEditTitleHandler}
+        onEditContent={onEditContentHandler}
       />
     </>
   );
