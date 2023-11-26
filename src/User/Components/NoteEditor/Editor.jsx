@@ -1,6 +1,8 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import classes from "./NoteEditor.module.css";
 import Sidebar from "../Sidebar/Sidebar";
+import {useGenerate} from "../../hooks/use-generate";
+import {useParams} from "react-router-dom";
 
 const Editor = ({
   currentNote,
@@ -11,6 +13,18 @@ const Editor = ({
 }) => {
   const titleRef = useRef();
   const contentRef = useRef();
+  console.log("this note: ", currentNote);
+  const params = useParams;
+  const id = !params.id ? useGenerate() : currentNote.id;
+
+  const onSaveHandler = () => {
+    onSideAction.save({
+      ...currentNote,
+      id: id,
+      addedDate: new Date(),
+    });
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
@@ -38,7 +52,7 @@ const Editor = ({
           ></textarea>
         </div>
         <Sidebar
-          onSave={onSideAction.save}
+          onSave={() => onSaveHandler()}
           onCopy={onSideAction.copy}
           onExport={onSideAction.export}
           onDelete={onSideAction.delete}

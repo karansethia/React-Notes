@@ -95,7 +95,7 @@ export const noteSlice = createSlice({
     },
     saveNote(state, action){
       //! if id not existing in state add note or update note
-      const {id, title, content, includedTags,isPin} = action.payload;
+      const {id, title, content, includedTags,isPin, addedDate} = action.payload;
       const noteItem = state.notes.find((note) => note.id === id);
       if(!noteItem){
         state.notes.push({
@@ -103,7 +103,8 @@ export const noteSlice = createSlice({
           title: title,
           content: content,
           includedTags: includedTags,
-          isPin: isPin
+          isPin: isPin,
+          addedDate: addedDate
         })
       }else{
         noteItem.content = content;
@@ -114,7 +115,7 @@ export const noteSlice = createSlice({
     shareNote(state, action){
       //!get the id from payload and send that note to somewhere => we'll figure that part later
     },
-    addTag(state, payload){
+    addTag(state, action){
       //todo - we'll add custom tag functionality later
 
     },

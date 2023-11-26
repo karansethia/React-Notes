@@ -25,9 +25,10 @@ const NoteEditor = () => {
   const dispatch = useDispatch();
 
   //*sidebtn logic and dispatch actions
-  const saveHandler = () => {
+  const saveHandler = (newnote) => {
     console.log("sidebtn clicked : save");
-    dispatch(noteActions.saveNote({}));
+    console.log(newnote);
+    dispatch(noteActions.saveNote(newnote));
   };
   const copyHandler = () => {
     console.log("sidebtn clicked : copy");
