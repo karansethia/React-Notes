@@ -6,9 +6,7 @@ import {useSelector} from "react-redux";
 
 const Notes = ({gridtype, notes}) => {
   const sortbytag = useSelector((state) => state.ui.user.sortTag);
-  console.log("sort by tag array", sortbytag);
   const sortby = useSelector((state) => state.ui.user.sortRecent);
-  console.log(sortby);
   //todo create a custom hook that filter this data
   let filteredNotes = [];
   if (sortbytag.length != 0) {
@@ -35,8 +33,6 @@ const Notes = ({gridtype, notes}) => {
       .slice()
       .sort((a, b) => b.addedDate - a.addedDate);
   }
-
-  console.log(sortedNotes);
   let cls = classes.containercol;
   let num = notes.length;
   if (gridtype === "containergrid") {

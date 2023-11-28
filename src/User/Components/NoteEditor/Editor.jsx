@@ -2,7 +2,6 @@ import React, {useEffect, useRef} from "react";
 import classes from "./NoteEditor.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 import {useGenerate} from "../../hooks/use-generate";
-import {useParams} from "react-router-dom";
 
 const Editor = ({
   currentNote,
@@ -10,13 +9,11 @@ const Editor = ({
   onSideAction,
   onEditTitle,
   onEditContent,
+  currentNoteId,
 }) => {
   const titleRef = useRef();
   const contentRef = useRef();
-  console.log("this note: ", currentNote);
-  const params = useParams;
-  const id = !params.id ? useGenerate() : currentNote.id;
-
+  const id = currentNoteId ? currentNoteId : useGenerate();
   const onSaveHandler = () => {
     onSideAction.save({
       ...currentNote,

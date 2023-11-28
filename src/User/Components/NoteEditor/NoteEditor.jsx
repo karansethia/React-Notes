@@ -83,6 +83,8 @@ const NoteEditor = () => {
         return updatedNote;
       });
     }
+    //todo adding tag in tag (note slice)
+    dispatch(noteActions.addTag(tag));
   };
 
   //* logic for changing the note in local state
@@ -111,6 +113,7 @@ const NoteEditor = () => {
         <AddTag onclose={closeTagHandler} onAddTag={onAddTagHandler} />
       )}
       <Editor
+        currentNoteId={params.noteId}
         currentNote={note}
         onAdd={showTagHandler}
         onSideAction={sideFunctions}

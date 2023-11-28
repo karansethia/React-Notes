@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./NoteElement.module.css";
 
 const NoteElement = (props) => {
-  console.log(props.title);
   const noteTitle = props.title.split(" ");
   var title = "";
   if (noteTitle.length > 3) {
