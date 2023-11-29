@@ -17,7 +17,7 @@ const AddTagModal = (props) => {
         tagName: tagTitle,
         color: tagColor,
       };
-      props.onAddTag(tag);
+      props.onAddTag(tag, true);
       props.onclose();
     }
   };
@@ -42,7 +42,10 @@ const AddTagModal = (props) => {
                 className={classes.tag}
                 key={tag.tagName}
                 onClick={() => {
-                  props.onAddTag({tagName: tag.tagName, color: tag.color});
+                  props.onAddTag(
+                    {tagName: tag.tagName, color: tag.color},
+                    false
+                  );
                   props.onclose();
                 }}
               >

@@ -7,6 +7,7 @@ import Editor from "./Editor";
 const NoteEditor = () => {
   const params = useParams();
   const data = useSelector((state) => state.stateNotes.notes);
+  const existingTags = useSelector((state) => state.stateNotes.tags);
   const [note, setNote] = useState({
     id: null,
     title: "",
@@ -70,21 +71,40 @@ const NoteEditor = () => {
   };
 
   //* logic for creating adding tags
-  const onAddTagHandler = (tag) => {
-    const exists = note.includedTags.filter(
-      (note) => note.tagName == tag.tagName
-    );
-    if (exists.length == 0) {
-      setNote((prevNote) => {
-        const updatedNote = {
-          ...prevNote,
-          includedTags: [...prevNote.includedTags, tag],
-        };
-        return updatedNote;
-      });
+  const onAddTagHandler = (tag, isCustom) => {
+    if (isCustom) {
+      const existingTag = existingTags.filter((t) => t.tagName == tag.tagName);
+      console.log(existingTag);
+      if (existingTag.length == 0) {
+        setNote((prevNote) => {
+          const updatedNote = {
+            ...prevNote,
+            includedTags: [...prevNote.includedTags, tag],
+          };
+          return updatedNote;
+        });
+      } else {
+        console.log(`${tag.tagName} already exists`);
+      }
+      dispatch(noteActions.addTag(tag));
     }
-    //todo adding tag in tag (note slice)
-    dispatch(noteActions.addTag(tag));
+    if (!isCustom) {
+      const exists = note.includedTags.filter(
+        (note) => note.tagName == tag.tagName
+      );
+      if (exists.length == 0) {
+        setNote((prevNote) => {
+          const updatedNote = {
+            ...prevNote,
+            includedTags: [...prevNote.includedTags, tag],
+          };
+          return updatedNote;
+        });
+      }
+      console.log(note);
+      //todo adding tag in tag (note slice)
+      dispatch(noteActions.addTag(tag));
+    }
   };
 
   //* logic for changing the note in local state
