@@ -37,7 +37,7 @@ const Navbar = () => {
         />
       </svg>
       <Link
-        to="/login"
+        to="/user"
         className="bg-[#252AD0] px-5 py-1 cursor-pointer rounded-md text-white text-sm"
       >
         Login

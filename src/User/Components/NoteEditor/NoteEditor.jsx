@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import AddTag from "../AddTag/AddTag";
 import {useSelector, useDispatch} from "react-redux";
 import {noteActions} from "../../store/note-slice";
 import Editor from "./Editor";
 const NoteEditor = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const data = useSelector((state) => state.stateNotes.notes);
   const existingTags = useSelector((state) => state.stateNotes.tags);
   const [note, setNote] = useState({
@@ -30,6 +31,7 @@ const NoteEditor = () => {
     console.log("sidebtn clicked : save");
     console.log(newnote);
     dispatch(noteActions.saveNote(newnote));
+    navigate("/user");
   };
   const copyHandler = () => {
     console.log("sidebtn clicked : copy");
@@ -41,11 +43,12 @@ const NoteEditor = () => {
   };
   const deleteHandler = () => {
     console.log("sidebtn clicked : delete");
-    dispatch(noteActions.deleteNote);
+    dispatch(noteActions.deleteNote(params.noteId));
+    navigate("/user");
   };
   const pinHandler = () => {
     console.log("sidebtn clicked : pin");
-    dispatch(noteActions.pinStatus);
+    dispatch(noteActions.pinStatus(params.noteId));
   };
   const removeTagHandler = () => {};
 

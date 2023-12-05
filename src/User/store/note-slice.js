@@ -129,7 +129,7 @@ export const noteSlice = createSlice({
     deleteNote(state, action){
       //! take the id and delete the note from the state
       const current_id = action.payload;
-      state.notes = state.notes.filter((note) => note.id === current_id);
+      state.notes = state.notes.filter((note) => note.id !== current_id);
     },
     deleteAllNotes(state, action){
       //! empty the state
