@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between px-16 py-3 items-center bg-[#11192C] w-full h-fit">
+    <nav className="flex justify-between px-16 py-3 items-center bg-[#11192C] w-full h-fit max-md:px-4 ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="136"

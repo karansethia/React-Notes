@@ -7,7 +7,7 @@ const Input = ({iotype, field}) => {
         <input
           type={iotype}
           placeholder={field}
-          className="h-8 w-[15rem] px-3 text-royal border-royal border-b-2 rounded-lg border-opacity-50 outline-none focus:border-blue-500 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
+          className="h-8 w-[15rem] px-3 text-royal border-royal border-b-2 rounded-lg border-opacity-50 outline-none focus:border-blue-500 placeholder-gray-300 placeholder-opacity-0 transition duration-200 max-md:w-48"
         />
         <span className=" text-royal bg-white rounded-lg text-opacity-80 absolute left-1 top-1 px-1 transition duration-200 input-text font-textFont text-sm">
           {field}
