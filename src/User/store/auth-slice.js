@@ -17,8 +17,3 @@ export const authSlice = createSlice({
 });
 
 export const authActions = authSlice.actions;
-
-//helper variables for tokens and users in the current state
-
-export const currentUser = state => state.auth.user;
-export const currentToken = state => state.auth.token;
