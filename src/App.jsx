@@ -1,11 +1,11 @@
 import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import RootLayout from "./User/Pages/RootLayout";
-import NoteDash from "./User/Pages/NoteDash";
-import Newnote from "./User/Pages/Newnote.jsx";
-import Home from "./Home/Pages/Home";
-import HomeLayout from "./Home/HomeLayout";
-import Login from "./Home/Pages/Login";
+import RootLayout from "@/User/Pages/RootLayout";
+import NoteDash from "@/User/Pages/NoteDash";
+import Newnote from "@/User/Pages/Newnote";
+import Home from "@/Home/Pages/Home";
+import HomeLayout from "@/Home/HomeLayout";
+import Login from "@/Home/Pages/Login";
 
 const router = createBrowserRouter([
   {
