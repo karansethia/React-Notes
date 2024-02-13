@@ -11,8 +11,6 @@ const characters ='abcdefghijklmnopqrstuvwxyz0123456789'
       }
     }
     generate()
-    const existing = notes.find((note) => note.id === generatedId);
-
-      return generatedId;
+    return generatedId;
    
 }

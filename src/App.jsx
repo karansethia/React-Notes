@@ -6,6 +6,9 @@ import Newnote from "@/User/Pages/NewNote";
 import Home from "@/Home/Pages/Home";
 import HomeLayout from "@/Home/HomeLayout";
 import Login from "@/Home/Pages/Login";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -27,7 +30,11 @@ const router = createBrowserRouter([
   },
 ]);
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+    </QueryClientProvider>
+  );
 };
 
 export default App;

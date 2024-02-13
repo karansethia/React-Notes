@@ -1,20 +1,37 @@
-import React from "react";
-
+import React, {useEffect} from "react";
+import {noteActions} from "../store/note-slice";
 import classes from "./NoteDash.module.css";
-import Navbar from "../Components/Navbar/Navbar";
+import {useQuery} from "@tanstack/react-query";
 import Notelist from "../Components/NoteList/Notelist";
 import Tagbar from "../Components/Tagbar/Tagbar";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {postLogin} from "../../utils/http";
 
 const NoteDash = () => {
-  const data = useSelector((state) => state.stateNotes.notes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const {data, isError, error, isLoading} = useQuery({
+      queryKey: ["notes"],
+      queryFn: postLogin,
+    });
+    console.log(data);
+    if (!isLoading && !isError) {
+      dispatch(noteActions.addNotes(data));
+    }
+    if (isError || error) {
+      //todo dispatch notification
+    }
+  });
+
+  const notes = useSelector((state) => state.stateNotes.notes);
   // console.log(data);
 
   return (
     <div className={classes.container}>
       <div className={classes.notedash}>
         <Tagbar />
-        <Notelist notes={data} />
+        {!isLoading && <Notelist notes={notes} />}
       </div>
     </div>
   );

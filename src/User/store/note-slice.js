@@ -87,6 +87,9 @@ export const noteSlice = createSlice({
   }
   ],tags:[{tagName:"Work", color:"red"},{tagName:"Development",color:"green"},{tagName:"Home",color:"blue"}]},
   reducers: {
+    addNotes(state,action){
+      state.notes = action.payload;
+    },
     pinStatus(state, action){
       //!get an id and match the note from the initial state and update the pin => !pin
       const current_id = action.payload;
