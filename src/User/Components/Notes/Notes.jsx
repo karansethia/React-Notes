@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {uiActions} from "../../store/ui-slice";
 import NoteElement from "../NoteElement/NoteElement";
 import classes from "./Notes.module.css";
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {Link, useLocation} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
 
 const Notes = ({gridtype, notes}) => {
+  const url = window.location.href;
+  const dispatch = useDispatch();
+  const location = useLocation();
+  console.log(location.pathname);
+  useEffect(() => {
+    dispatch(uiActions.resetTag());
+  }, [location.pathname, dispatch]);
   const sortbytag = useSelector((state) => state.ui.user.sortTag);
+  console.log(sortbytag);
   const sortby = useSelector((state) => state.ui.user.sortRecent);
   //todo create a custom hook that filter this data
   let filteredNotes = [];
@@ -44,17 +53,29 @@ const Notes = ({gridtype, notes}) => {
   }
   return (
     <div className={cls}>
-      {sortedNotes?.slice(0, num).map((note) => (
-        <Link to={`/user/${note.id}`} key={note.id}>
-          <NoteElement
-            id={note.id}
-            title={note.title}
-            content={note.content}
-            includedtags={note.includedTags}
-            ispin={note.isPin}
-          />
-        </Link>
-      ))}
+      {location.pathname === "/user"
+        ? sortedNotes?.slice(0, num).map((note) => (
+            <Link to={`/user/${note.id}`} key={note.id}>
+              <NoteElement
+                id={note.id}
+                title={note.title}
+                content={note.content}
+                includedtags={note.includedTags}
+                ispin={note.isPin}
+              />
+            </Link>
+          ))
+        : notes?.slice(0, num).map((note) => (
+            <Link to={`/user/${note.id}`} key={note.id}>
+              <NoteElement
+                id={note.id}
+                title={note.title}
+                content={note.content}
+                includedtags={note.includedTags}
+                ispin={note.isPin}
+              />
+            </Link>
+          ))}
     </div>
   );
 };

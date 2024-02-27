@@ -3,12 +3,13 @@ import classes from "./Navbar.module.css";
 import User from "../../../assets/user.png";
 import SideMenu from "../SideMenu/SideMenu";
 import {Link} from "react-router-dom";
-
+import {useSelector} from "react-redux";
 const Navbar = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const toggleHandler = () => {
     setToggleSidebar(!toggleSidebar);
   };
+  const {user, image} = useSelector((state) => state.auth);
   return (
     <>
       <nav className={classes.nav}>
@@ -49,8 +50,8 @@ const Navbar = () => {
 
         <div className={classes.infocontainer}>
           <div className={classes.info}>
-            <img src={User} alt="" />
-            <h4>Karan</h4>
+            <img src={image} alt="" />
+            <h4>{user}</h4>
           </div>
           <div onClick={toggleHandler} style={{cursor: "pointer"}}>
             <svg

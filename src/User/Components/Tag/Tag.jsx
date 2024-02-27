@@ -11,7 +11,7 @@ const Tag = ({tag}) => {
   const setTagHandler = (title) => {
     if (sorttag.indexOf(title) != -1) {
       dispatch(uiActions.removeTag(title));
-      console.log(sorttag);
+
       setIsTagActive(false);
     } else {
       dispatch(uiActions.sortTag(title));

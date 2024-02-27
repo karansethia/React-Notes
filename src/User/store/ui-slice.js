@@ -38,7 +38,10 @@ export const uiSlice = createSlice({
     removeTag(state, action){
     state.user.sortTag = state.user.sortTag.filter(function (tag) {
     return tag !== action.payload;
-});
+      });
+    },
+    resetTag(state){
+      state.user.sortTag = [];
     }
   }
 });
